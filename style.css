@@ -1,0 +1,318 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    user-select: none;
+}
+
+body {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url("./images/purple.jpg") no-repeat;
+    background-size: cover;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 3rem 6rem 3rem 6rem;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+.logo::before {
+    content: '';
+    position: absolute;
+    top: .7rem;
+    left: 1rem;
+    width: 6rem;
+    height: 5rem;
+    background-image: url("./images/undraw_drink-coffee_q0ey.png");
+    background-position: center;
+    background-size: contain;
+    background-color: transparent;
+    background-repeat: no-repeat;
+}
+
+.logo {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.navigation a {
+    position: relative;
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 2.8rem;
+}
+
+.navigation a:first-child {
+    font-size: 2rem;
+    color: #ffad94; /* Peach Orange */
+    text-shadow: 
+        0 0 5px rgba(255, 173, 148, 0.5), 
+        0 0 10px rgba(255, 173, 148, 0.3);
+}
+
+.navigation a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.5rem;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    transition: transform .4s;
+    border-radius: 0.5rem;
+    transform-origin: right;
+    transform: scaleX(0);
+}
+
+.navigation a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.navigation .btn-login-popup {
+    width: 9rem;
+    height: 3.5rem;
+    background: transparent;
+    border: 2px solid #3ddfbd;
+    border-radius: .5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #3ddfbd; /* Turquoise Green */
+    text-shadow: 
+        0 0 5px rgba(61, 223, 189, 0.5), 
+        0 0 10px rgba(61, 223, 189, 0.3);
+    box-shadow: 
+        0 4px 6px rgba(61, 223, 189, 0.4),
+        0 2px 4px rgba(61, 223, 189, 0.3),
+        inset 0 0 10px rgba(61, 223, 189, 0.2);
+    cursor: pointer;
+    outline: none;
+    margin-left: 3rem;
+    transition: all .3s;
+    transform: translateY(0);
+}
+
+.navigation .btn-login-popup:hover {
+    background-color: #3ddfbd;
+    color: rgb(26, 20, 20);
+    transform: translateY(-3px);
+}
+
+.navigation .btn-login-popup:active {
+    background-color: #6fe1c8;
+    transform: translateY(0);
+}
+
+.wrapper {
+    position: relative;
+    width: 400px;
+    height: 440px;
+    background: transparent;
+    border: 2px solid rgb(255, 255, 255, 0.5);
+    border-radius: 1rem;
+    backdrop-filter: blur(1.2rem);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transform: scale(0);
+    box-shadow: 
+        0 0 20px rgba(150, 119, 227, 0.7),
+        0 0 40px rgba(122, 72, 208, 0.5); 
+    transition: transform .5s ease, height .5s ease;
+}
+
+
+.wrapper.active-popup {
+    transform: scale(1);
+}
+
+.wrapper.active {
+    height: 520px;
+}
+
+.wrapper .form-box {
+    width: 100%;
+    padding: 2.5rem;
+}
+
+.wrapper .form-box.login {
+    transition: transform .3s ease;
+    transform: translateX(0);
+}
+
+.wrapper.active .form-box.login {
+    transform: translateX(-400px);
+}
+
+.wrapper .form-box.register {
+    position: absolute;
+    transition: transform .3s ease;
+    transform: translateX(400px);
+}
+
+.wrapper.active .form-box.register {
+    transition: transform .3s ease;
+    transform: translateX(0);
+}
+
+.form-box h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    color: #9677e3;
+    text-shadow: 
+        0 0 10px #4a2f8e,
+        0 0 20px #7a48d0,
+        0 0 30px #b083ff;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+
+.input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #9677e3;
+    margin: 30px 0;
+}
+
+.input-box label {
+    position: absolute;
+    top: 30px;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: 091015;
+    font-weight: 500;
+    color: #c6b8eb;
+    pointer-events: none;
+    transition: .3s;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label
+ {
+    top: -5px;
+}
+
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+}
+
+.input-box .icon {
+    position: absolute;
+    right: 8px;
+    font-size: 1.3rem;
+    color: rgb(220, 208, 208);
+    line-height: 57px;
+}
+
+.remember-forget {
+    font-size: .9rem;
+    color: #dcd1ff;
+    font-weight: 500;
+    
+    margin: -15px 0 15px;
+    margin-top: 0.2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forget label input {
+    accent-color: #091015;
+    margin-right: 3px;
+} 
+
+.remember-forget a {
+    color: #ffe1b0;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.remember-forget a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    width: 100%;
+    height: 50px;
+    background: #091015;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: .5rem;
+    margin: 20px 0;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: white;
+    color: #091015;
+}
+
+.login-register {
+    font-size: .9rem;
+    color:  #f5c77f;
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px;
+}
+
+.login-register a {
+    color: #9677e3;
+    text-decoration: none;
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.wrapper .icon-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #091015;
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+    transition: .3s;
+    border-bottom-left-radius: 20px;
+    z-index: 1;
+}
